@@ -25,6 +25,7 @@
          //session_register("myusername");
          $_SESSION['login_user'] = $myusername;
 		 $_SESSION['user_type'] = $usertype;
+		 $_SESSION['user_id'] = $row["ID"];
          
          if($usertype == 1) header("location: student.php");
 		 else header("location: faculty.php");
