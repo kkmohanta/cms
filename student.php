@@ -16,10 +16,6 @@
 		
 		$sql = "insert into comp_table(Student_ID, Fac_ID, Status, Content, Title) values('$sid','$fac','1','$text','$title')";
 		$result = mysqli_query($db,$sql);
-		if($result==1){
-			echo "Succesfully saved.";
-		}
-		else echo "Something is wrong.....couldn't be saved to server.";
 		
 	}
 ?>
