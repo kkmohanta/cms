@@ -32,6 +32,7 @@
 				<td>Subject</td> 
 				<td>Message</td>
 				<td>Status</td>
+				<td>Delete</td>
 			</tr>
 			<?php
 				$conn = new mysqli('localhost:3306', 'root', '', 'cms');
@@ -59,6 +60,11 @@
 								<?php }else{ ?>
 								Solved
 							<?php } ?>
+						</td>
+						<td>
+							<form action="delete.php" method="get">
+								<button name="discard" value="<?php echo $row['ID']; ?>">Discard</button>
+							</form>
 						</td>
 					</tr>
 					
