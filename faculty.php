@@ -7,14 +7,14 @@
 	}
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      
-      $id = mysqli_real_escape_string($db,$_POST['but']);
-      
-      $sql = "update comp_table set Status=2 where ID='$id'";
-      $result = mysqli_query($db,$sql);
-	  
-   }
+		// username and password sent from form 
+		
+		$id = mysqli_real_escape_string($db,$_POST['but']);
+		
+		$sql = "update comp_table set Status=2 where ID='$id'";
+		$result = mysqli_query($db,$sql);
+		
+	}
 ?>
 <html>
 	
@@ -40,7 +40,7 @@
 					die("Connection failed: " . $conn->connect_error);
 				} 
 				$fid = $_SESSION['user_id'];
-				$sql = "SELECT ID,Student_ID,Status,Content,Title FROM comp_table";
+				$sql = "SELECT ct.ID,st.Username,ct.Status,ct.Content,ct.Title FROM comp_table ct,student_table st where ct.Fac_ID=$fid and ct.Student_ID=st.ID";
 				$result = $conn->query($sql);
 				
 				if ($result->num_rows > 0) {
@@ -48,15 +48,15 @@
 					while($row = $result->fetch_assoc()) {
 					?>
 					<tr>
-						<td><?php echo $row["Student_ID"]; ?></td>
+						<td><?php echo $row["Username"]; ?></td>
 						<td><?php echo $row["Title"]; ?></td> 
 						<td><?php echo $row["Content"]; ?></td>
 						<td>
 							<?php if($row["Status"]==1) { ?>
-							<form action="faculty.php" method="post">
-								<button name="but" value="<?php echo $row['ID']; ?>">Resolve</button>
-							</form>
-							<?php }else{ ?>
+								<form action="faculty.php" method="post">
+									<button name="but" value="<?php echo $row['ID']; ?>">Resolve</button>
+								</form>
+								<?php }else{ ?>
 								Solved
 							<?php } ?>
 						</td>
@@ -68,6 +68,6 @@
 				}
 			?>
 		</table>
-	</body>
-	
-</html>
+		</body>
+		
+			</html>				
