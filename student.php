@@ -19,21 +19,31 @@
 		
 	}
 ?>
-<html>
-	<head>
-		<meta name="generator"
-		content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-		<title>Welcome</title>
-	</head>
-	<body>
-		<h1>Welcome <?php echo $_SESSION['login_user']; ?></h1>
-		<h2>
-			<a href="Logout.php">Sign Out</a>
-		</h2>
-		<form action="student.php" method="post">
-			<input name="Title" type="text" placeholder="Subject" /> 
-			<input name="Text" type="text" placeholder="Complaint Details..." /> 
-			<select name="ToFaculty">
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Student Page</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="css/student.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div class="login-page">
+  <div class="form">
+    <form class="complaint-form" action="student.php" method="post">
+	  <h1>Welcome <?php echo $_SESSION['login_user']; ?></h1>
+	  </br>
+	  </br>
+	  <div id="Against">Complaint against</div>
+      <select name="ToFaculty">
 				<?php
 					$conn = new mysqli('localhost:3306', 'root', '', 'cms');
 					// Check connection
@@ -53,17 +63,19 @@
 						}
 					}
 				?>
-			</select> 
-			<button>login</button>
-			<p class="message">Not registered? 
-			<a href="#">Create an account</a></p>
-		</form>
-		<table style="width:100%" border="1">
+		</select> 
+	  <input name="Title" type="text" placeholder="Subject" /> 
+	  <textarea name="Text" type="text" placeholder="Complaint Details..." ></textarea> 
+	  <button>Submit</button>
+    </form>
+	<br>
+	<form>
+	<table style="width:100%" border="1" tr:hover {background-color: #f5f5f5}>
 			<tr>
-				<td>Faculty</td>
-				<td>Subject</td> 
-				<td>Message</td>
-				<td>Status</td>
+				<th>Faculty</th>
+				<th>Subject</th> 
+				<th>Message</th>
+				<th>Status</th>
 			</tr>
 			<?php
 				$conn = new mysqli('localhost:3306', 'root', '', 'cms');
@@ -98,5 +110,18 @@
 				}
 			?>
 		</table>
-	</body>
+	</form>
+	<form action="Logout.php">
+	<button>Logout</button>
+	</form>
+  </div>
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
 </html>

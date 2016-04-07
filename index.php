@@ -16,7 +16,7 @@
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
-      
+		
       $count = mysqli_num_rows($result);
       
       // If result matched $myusername and $mypassword, table row must be 1 row
@@ -29,21 +29,25 @@
          
          if($usertype == 1) header("location: student.php");
 		 else header("location: faculty.php");
-      }else {
-         echo "Your Login Name or Password is invalid";
-      }
+		}else{ ?>
+		<div id="error" style="
+		position: relative;
+		top: 137px;
+		left: 560px;
+		z-index: 100;">Wrong username or password!!</div>
+		<?php
+      }	
    }
 ?>
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Flat HTML5/CSS3 Login Form</title>
+    <title>Login Page</title>
     
     
     
     
         <link rel="stylesheet" href="css/style.css">
-
     
     
     

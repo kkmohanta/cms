@@ -16,25 +16,36 @@
 		
 	}
 ?>
-<html>
-	
-	<head>
-		<title>Welcome </title>
-	</head>
-	
-	<body>
-		<h1>Welcome <?php echo $_SESSION['login_user']; ?></h1> 
-		<h2><a href = "Logout.php">Sign Out</a></h2>
-		
-		<table style="width:100%" border="1">
-			<tr>
-				<td>Student</td>
-				<td>Subject</td> 
-				<td>Message</td>
-				<td>Status</td>
-				<td>Delete</td>
-			</tr>
-			<?php
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Faculty Page</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="css/faculty.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div class="login-page">
+  <div class="form">
+    <form class="display-form" method="POST"  action="">
+	<h1>Welcome <?php echo $_SESSION['login_user']; ?></h1>
+    <table style="width:100%">
+	<tr>
+    <th>Student</th>
+    <th>Subject</th>
+    <th>Message</th>
+	<th>Status</th>
+	<th>Delete</th>
+	</tr>
+	<?php
 				$conn = new mysqli('localhost:3306', 'root', '', 'cms');
 				// Check connection
 				if ($conn->connect_error) {
@@ -73,7 +84,20 @@
 					}
 				}
 			?>
-		</table>
-		</body>
-		
-			</html>				
+	</table>
+    </form>
+	<br>
+	<form action="Logout.php">
+	<button>Logout</button>
+	</form>
+  </div>
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
